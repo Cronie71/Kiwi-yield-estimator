@@ -1,5 +1,19 @@
 import streamlit as st
 
+# Add this CSS to fix the brown outline trail on your support link
+
+st.markdown(
+    """
+    <style>
+    a:focus, a:active {
+        outline: none !important;
+        box-shadow: none !important;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
 # --- Load from secrets ---
 
 PASSWORD = st.secrets["auth"]["password"]
