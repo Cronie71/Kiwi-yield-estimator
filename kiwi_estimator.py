@@ -102,35 +102,49 @@ elif option == "Revenue Estimate":
         st.info(f"Revenue per Tree: **R{revenue_per_tree:.2f}**")
 
 st.markdown(
-        """
-        <style>
-        a:focus, a:active, a:hover, a:visited {
-            outline: none !important;
-            box-shadow: none !important;
-            border: none !important;
-            background: none !important;
-            color: #cc6600 !important;
-        }
+    """
+    <style>
+    /* Universal link styling override */
+    a:link, a:visited, a:hover, a:active, a:focus {
+        outline: none !important;
+        box-shadow: none !important;
+        border: none !important;
+        background: none !important;
+        color: #cc6600 !important;  /* Match your theme */
+        text-decoration: none !important;
+    }
 
-        input:focus, textarea:focus {
-            border: 1px solid #0f0 !important;
-            box-shadow: none !important;
-        }
-        </style>
+    /* Remove persistent focus indicators from all elements */
+    *:focus {
+        outline: none !important;
+        box-shadow: none !important;
+    }
 
-        <a href="https://buymeacoffee.com/jacques05" target="_blank" style="
-            display:inline-block;
-            padding:10px 15px;
-            background-color:#fff3e0;
-            color:#cc6600;
-            font-weight:bold;
-            border-radius:8px;
-            text-decoration:none;
-            border: 2px solid #cc6600;
-            ">
-            Support this program
-        </a>
-        """,
-        unsafe_allow_html=True
-    )
+    /* Optional: Fixes Streamlit-specific components */
+    section:focus-within {
+        outline: none !important;
+        box-shadow: none !important;
+    }
 
+    /* Optional: Input border fix */
+    input:focus, textarea:focus {
+        border: 1px solid #0f0 !important;
+        box-shadow: none !important;
+    }
+    </style>
+
+    <a href="https://buymeacoffee.com/jacques05" target="_blank" style="
+        display:inline-block;
+        padding:10px 15px;
+        background-color:#fff3e0;
+        color:#cc6600;
+        font-weight:bold;
+        border-radius:8px;
+        text-decoration:none;
+        border: 2px solid #cc6600;
+        ">
+        Support this program
+    </a>
+    """,
+    unsafe_allow_html=True
+)
