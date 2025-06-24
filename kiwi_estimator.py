@@ -19,7 +19,15 @@ def login():
 
     # ✅ Show disclaimer after successful login
 
-    with st.expander("📘 Disclaimer & Assumptions", expanded=True):
+    # Track if user has accepted the disclaimer
+
+    if "disclaimer_accepted" not in st.session_state:
+        st.session_state.disclaimer_accepted = False
+
+    # Set whether the expander is open or collapsed
+    expanded_state = not st.session_state.disclaimer_accepted
+
+    with st.expander("📘 Disclaimer & Assumptions", expanded=expanded_state):
         st.markdown(
             """
             ### 📌 Important Information
@@ -41,9 +49,12 @@ def login():
 
     # ✅ Add confirm checkbox before continuing
 
-    if not st.checkbox("I have read and accept the information above."):
+    if not st.session_state.disclaimer_accepted:
         st.warning("You must acknowledge the disclaimer to continue.")
         st.stop()
+
+        if st.button("I have read and accept the information above."):
+            st.session_state.disclaimer_accepted = True
 
 login()
 
@@ -104,45 +115,31 @@ elif option == "Revenue Estimate":
 st.markdown(
     """
     <style>
-    /* Universal link styling override */
-    a:link, a:visited, a:hover, a:active, a:focus {
-        outline: none !important;
-        box-shadow: none !important;
-        border: none !important;
-        background: none !important;
-        color: #cc6600 !important;  /* Match your theme */
-        text-decoration: none !important;
-    }
-
-    /* Remove persistent focus indicators from all elements */
+    /* Fix global outline/box-shadow trail */
     *:focus {
         outline: none !important;
         box-shadow: none !important;
     }
 
-    /* Optional: Fixes Streamlit-specific components */
-    section:focus-within {
-        outline: none !important;
-        box-shadow: none !important;
+    /* Style the support button */
+    .support-button {
+        display: inline-block;
+        padding: 10px 15px;
+        background-color: #fff3e0;
+        color: #cc6600 !important;
+        font-weight: bold;
+        border-radius: 8px;
+        text-decoration: none;
+        border: 2px solid #cc6600;
+        transition: background 0.3s ease;
     }
 
-    /* Optional: Input border fix */
-    input:focus, textarea:focus {
-        border: 1px solid #0f0 !important;
-        box-shadow: none !important;
+    .support-button:hover {
+        background-color: #ffe0b2;
     }
     </style>
 
-    <a href="https://buymeacoffee.com/jacques05" target="_blank" style="
-        display:inline-block;
-        padding:10px 15px;
-        background-color:#fff3e0;
-        color:#cc6600;
-        font-weight:bold;
-        border-radius:8px;
-        text-decoration:none;
-        border: 2px solid #cc6600;
-        ">
+    <a href="https://buymeacoffee.com/jacques05" target="_blank" class="support-button">
         Support this program
     </a>
     """,
