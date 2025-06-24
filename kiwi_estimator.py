@@ -19,15 +19,11 @@ def login():
 
     # ✅ Show disclaimer after successful login
 
-    # Track if user has accepted the disclaimer
-
+    # Initialize disclaimer acceptance status in session state
     if "disclaimer_accepted" not in st.session_state:
         st.session_state.disclaimer_accepted = False
 
-    # Set whether the expander is open or collapsed
-    expanded_state = not st.session_state.disclaimer_accepted
-
-    with st.expander("📘 Disclaimer & Assumptions", expanded=expanded_state):
+    with st.expander("📘 Disclaimer & Assumptions", expanded=not st.session_state.disclaimer_accepted):
         st.markdown(
             """
             ### 📌 Important Information
@@ -47,12 +43,16 @@ def login():
             """
         )
 
-    # ✅ Add confirm checkbox before continuing
+        # Show accept button only if not accepted yet
+        if not st.session_state.disclaimer_accepted:
+            if st.button("I have read and accept the disclaimer"):
+                st.session_state.disclaimer_accepted = True
+                st.rerun()  # Trigger a single rerun to collapse and proceed
 
+    # If not accepted, stop the rest of the app
     if not st.session_state.disclaimer_accepted:
-
-        if st.button("I have read and accept the information above."):
-            st.session_state.disclaimer_accepted = True
+        st.warning("You must accept the disclaimer before using the tool.")
+        st.stop()
 
 login()
 
