@@ -17,44 +17,44 @@ def login():
         st.error("Incorrect password. Try again.")
         st.stop()
 
-    # ✅ Show disclaimer after successful login
-
-    # Initialize disclaimer acceptance status in session state
-    if "disclaimer_accepted" not in st.session_state:
-        st.session_state.disclaimer_accepted = False
-
-    with st.expander("📘 Disclaimer & Assumptions", expanded=not st.session_state.disclaimer_accepted):
-        st.markdown(
-            """
-            ### 📌 Important Information
-            
-            This calculator is provided as a general **planning tool** for kiwi fruit yield and revenue estimation until further development.
-            
-            - Estimates are based on user inputs and standard assumptions.
-            - Actual results may vary due to farm-specific factors such as climate, irrigation, fruit set variation, and tree age.
-            - **No liability** is accepted by the developer or distributor for financial decisions or crop outcomes influenced by this program.
-            
-            ---
-            ### Yield Standard Assumption
-            - This tool assumes a standard planting density of **666 trees per hectare**, based on:
-                - 100m rows with 5m row spacing → 20 rows/ha
-                - 3m between trees → 33.33 trees/row
-                - → **~666 trees/ha**
-            """
-        )
-
-        # Show accept button only if not accepted yet
-        if not st.session_state.disclaimer_accepted:
-            if st.button("I have read and accept the disclaimer"):
-                st.session_state.disclaimer_accepted = True
-                st.rerun()  # Trigger a single rerun to collapse and proceed
-
-    # If not accepted, stop the rest of the app
-    if not st.session_state.disclaimer_accepted:
-        st.warning("You must accept the disclaimer before using the tool.")
-        st.stop()
-
 login()
+
+# ✅ Show disclaimer after successful login
+
+# Initialize disclaimer acceptance status in session state
+if "disclaimer_accepted" not in st.session_state:
+    st.session_state.disclaimer_accepted = False
+
+with st.expander("📘 Disclaimer & Assumptions", expanded=not st.session_state.disclaimer_accepted):
+    st.markdown(
+        """
+        ### 📌 Important Information
+        
+        This calculator is provided as a general **planning tool** for kiwi fruit yield and revenue estimation until further development.
+        
+        - Estimates are based on user inputs and standard assumptions.
+        - Actual results may vary due to farm-specific factors such as climate, irrigation, fruit set variation, and tree age.
+        - **No liability** is accepted by the developer or distributor for financial decisions or crop outcomes influenced by this program.
+        
+        ---
+        ### Yield Standard Assumption
+        - This tool assumes a standard planting density of **666 trees per hectare**, based on:
+            - 100m rows with 5m row spacing → 20 rows/ha
+            - 3m between trees → 33.33 trees/row
+            - → **~666 trees/ha**
+        """
+    )
+
+    # Show accept button only if not accepted yet
+    if not st.session_state.disclaimer_accepted:
+        if st.button("I have read and accept the disclaimer"):
+            st.session_state.disclaimer_accepted = True
+            st.rerun()  # Trigger a single rerun to collapse and proceed
+
+# If not accepted, stop the rest of the app
+if not st.session_state.disclaimer_accepted:
+    st.warning("You must accept the disclaimer before using the tool.")
+    st.stop()
 
 st.title("Kiwi Fruit Production Estimator")
 
