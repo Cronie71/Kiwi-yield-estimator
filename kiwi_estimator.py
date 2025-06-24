@@ -1,29 +1,5 @@
 import streamlit as st
 
-# Add this CSS to fix the brown outline trail on your support link
-
-st.markdown(
-    """
-    <style>
-    /* Completely remove all outlines, shadows, and borders from links */
-    a:focus, a:active, a:hover, a:visited {
-        outline: none !important;
-        box-shadow: none !important;
-        border: none !important;
-        background: none !important;
-        color: #b26a00 !important; /* Optional: Match your orange theme */
-    }
-
-    /* Optional: also remove focused input border styles */
-    input:focus, textarea:focus {
-        border: 1px solid #0f0 !important; /* green if valid */
-        box-shadow: none !important;
-    }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
-
 # --- Load from secrets ---
 
 PASSWORD = st.secrets["auth"]["password"]
@@ -126,20 +102,35 @@ elif option == "Revenue Estimate":
         st.info(f"Revenue per Tree: **R{revenue_per_tree:.2f}**")
 
 st.markdown(
-    """
-    <a href="https://buymeacoffee.com/jacques05" target="_blank" style="
-        display:inline-block;
-        padding:10px 15px;
-        background-color:#fff3e0;
-        color:#cc6600;
-        font-weight:bold;
-        border-radius:8px;
-        text-decoration:none;
-        border: 2px solid #cc6600;
-        ">
-        Support this program
-    </a>
-    """,
-    unsafe_allow_html=True
-)
+        """
+        <style>
+        a:focus, a:active, a:hover, a:visited {
+            outline: none !important;
+            box-shadow: none !important;
+            border: none !important;
+            background: none !important;
+            color: #cc6600 !important;
+        }
+
+        input:focus, textarea:focus {
+            border: 1px solid #0f0 !important;
+            box-shadow: none !important;
+        }
+        </style>
+
+        <a href="https://buymeacoffee.com/jacques05" target="_blank" style="
+            display:inline-block;
+            padding:10px 15px;
+            background-color:#fff3e0;
+            color:#cc6600;
+            font-weight:bold;
+            border-radius:8px;
+            text-decoration:none;
+            border: 2px solid #cc6600;
+            ">
+            Support this program
+        </a>
+        """,
+        unsafe_allow_html=True
+    )
 
