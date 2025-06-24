@@ -1,0 +1,15 @@
+# Python cache and compiled files
+__pycache__/
+*.py[cod]
+
+# Streamlit secrets
+.streamlit/secrets.toml
+
+# VS Code settings (optional but common)
+.vscode/
+
+# Environment files
+.env
+
+# macOS system files
+.DS_Store
