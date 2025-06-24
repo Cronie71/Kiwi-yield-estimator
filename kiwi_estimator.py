@@ -50,8 +50,6 @@ def login():
     # ✅ Add confirm checkbox before continuing
 
     if not st.session_state.disclaimer_accepted:
-        st.warning("You must acknowledge the disclaimer to continue.")
-        st.stop()
 
         if st.button("I have read and accept the information above."):
             st.session_state.disclaimer_accepted = True
