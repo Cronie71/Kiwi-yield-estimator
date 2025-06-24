@@ -5,9 +5,16 @@ import streamlit as st
 st.markdown(
     """
     <style>
-    a:focus, a:active {
+    /* Remove outlines and shadows from all anchor tags */
+    a:focus, a:active, a:hover {
         outline: none !important;
         box-shadow: none !important;
+        border: none !important;
+    }
+
+    /* Force visited and focused links to match the color scheme */
+    a:visited, a:focus, a:active {
+        color: inherit !important;
     }
     </style>
     """,
