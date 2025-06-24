@@ -5,16 +5,19 @@ import streamlit as st
 st.markdown(
     """
     <style>
-    /* Remove outlines and shadows from all anchor tags */
-    a:focus, a:active, a:hover {
+    /* Completely remove all outlines, shadows, and borders from links */
+    a:focus, a:active, a:hover, a:visited {
         outline: none !important;
         box-shadow: none !important;
         border: none !important;
+        background: none !important;
+        color: #b26a00 !important; /* Optional: Match your orange theme */
     }
 
-    /* Force visited and focused links to match the color scheme */
-    a:visited, a:focus, a:active {
-        color: inherit !important;
+    /* Optional: also remove focused input border styles */
+    input:focus, textarea:focus {
+        border: 1px solid #0f0 !important; /* green if valid */
+        box-shadow: none !important;
     }
     </style>
     """,
@@ -134,7 +137,7 @@ st.markdown(
         text-decoration:none;
         border: 2px solid #cc6600;
         ">
-        ☕ Support this program
+        Support this program
     </a>
     """,
     unsafe_allow_html=True
