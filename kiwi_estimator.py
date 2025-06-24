@@ -46,9 +46,9 @@ if not st.session_state.disclaimer_accepted:
             """
         )
 
-        if st.button("I have read and accept the information above"):
-            st.session_state.disclaimer_accepted = True
-            st.experimental_rerun()
+    if st.button("I have read and accept the information above"):
+        st.session_state.disclaimer_accepted = True
+        st.rerun()
 
     st.warning("⚠️ You must accept the disclaimer before using the tool.")
     st.stop()
