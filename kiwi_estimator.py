@@ -35,15 +35,14 @@ if not st.session_state.disclaimer_accepted:
             
             - Estimates are based on user inputs and standard assumptions.
             - Actual results may vary due to farm-specific factors such as climate, irrigation, fruit set variation, and tree age.
-            - **No liability** is accepted by the developer or distributor for financial decisions or crop outcomes influenced by this program.
+            - **No liability** is accepted by the developer or distributor for financial decisions or crop outcomes influenced by this tool.
             
             ---
-            ### Yield Standard Assumption
-            - This tool assumes 16 canes are left per tree.
-            - This tool also assumes a standard planting density of **666 trees per hectare**, based on:
-                - 100m rows with 5m row spacing → 20 rows/ha
-                - 3m between trees → 33.33 trees/row
-                - → **~666 trees/ha**
+            ### Key Assumption
+            - This tool assumes **16 canes per tree**.
+            - Yield and revenue are calculated entirely from the orchard data **you provide**.
+
+            *Note: A common reference density in kiwi production is ~660 trees/ha (based on 5m row spacing and 3m between trees). This is not assumed in the tool's logic. However, if you use these spacings, you can estimate your total number of trees by multiplying your orchard size (in hectares) by 660.*
             """
         )
 
@@ -77,7 +76,7 @@ if option == "Flowers per Cane to Hit Target Yield":
     st.header("Estimate Flowers per Cane Needed")
 
     # Inputs
-    num_trees = st.number_input("Number of trees on your farm:", min_value=1, value=666)
+    num_trees = st.number_input("Number of trees on your farm:", min_value=1, value=660)
     land_size = st.number_input("Land size (hectares):", min_value=0.1, value=1.0)
     target_yield_ton_per_hectare = st.number_input("Target yield per hectare (tons):", min_value=1.0, value=10.0)
     fruit_weight = st.number_input("Average fruit weight (grams):", min_value=1.0, value=90.0)
@@ -96,7 +95,7 @@ elif option == "Revenue Estimate":
     st.header("Estimate Revenue")
 
     # Inputs
-    num_trees = st.number_input("Number of trees on your farm:", min_value=1, value=666)
+    num_trees = st.number_input("Number of trees on your farm:", min_value=1, value=660)
     fpc = st.number_input("Flowers per cane:", min_value=0.0, value=8.0, step=0.1)
     avg_price = st.number_input("Average fruit price per kg (ZAR):", min_value=0.0, value=60.0)
     fruit_weight = st.number_input("Average fruit weight (grams):", min_value=1.0, value=90.0)
@@ -121,7 +120,7 @@ st.markdown(
         box-shadow: none !important;
     }
 
-    /* Style the support button */
+    /* Style shared buttons */
     .support-button {
         display: inline-block;
         padding: 10px 15px;
@@ -132,6 +131,8 @@ st.markdown(
         text-decoration: none;
         border: 2px solid #cc6600;
         transition: background 0.3s ease;
+        margin-right: 10px;
+        margin-bottom: 10px;
     }
 
     .support-button:hover {
@@ -141,6 +142,10 @@ st.markdown(
 
     <a href="https://buymeacoffee.com/jacques05" target="_blank" class="support-button">
         Support this program
+    </a>
+
+    <a href="https://kiwi-estimator-feedback.netlify.app" target="_blank" class="support-button">
+        Feedback & Suggestions
     </a>
     """,
     unsafe_allow_html=True
