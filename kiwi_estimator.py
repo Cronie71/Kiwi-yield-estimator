@@ -39,7 +39,8 @@ if not st.session_state.disclaimer_accepted:
             
             ---
             ### Yield Standard Assumption
-            - This tool assumes a standard planting density of **666 trees per hectare**, based on:
+            - This tool assumes 16 canes are left per tree.
+            - This tool also assumes a standard planting density of **666 trees per hectare**, based on:
                 - 100m rows with 5m row spacing → 20 rows/ha
                 - 3m between trees → 33.33 trees/row
                 - → **~666 trees/ha**
@@ -85,7 +86,7 @@ if option == "Flowers per Cane to Hit Target Yield":
 
         target_kg = target_yield_ton_per_hectare * 1000 * land_size
         total_canes = num_trees * canes_per_plant
-        fpc = target_kg / (total_canes * fruit_weight)
+        fpc = target_kg / (total_canes * fruit_weight * 0.001)
 
         st.success(f"To reach your target of {target_yield_ton_per_hectare:.1f} tons/ha,")
         st.success(f"You need to leave **{fpc:.2f} flowers per cane**.")
