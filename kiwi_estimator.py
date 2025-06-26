@@ -36,6 +36,7 @@ if not st.session_state.disclaimer_accepted:
             - Estimates are based on user inputs and standard assumptions.
             - Actual results may vary due to farm-specific factors such as climate, irrigation, fruit set variation, and tree age.
             - **No liability** is accepted by the developer or distributor for financial decisions or crop outcomes influenced by this tool.
+            - Please support the the developers of this tool through the support link at the bottom of the next page.
             
             ---
             ### Key Assumption
@@ -144,7 +145,7 @@ st.markdown(
         Support this program
     </a>
 
-    <a href="https://kiwi-estimator-feedback.netlify.app" target="_blank" class="support-button">
+    <a href="https://formsubmit.co/el/johiwe" target="_blank" class="support-button">
         Feedback & Suggestions
     </a>
     """,
