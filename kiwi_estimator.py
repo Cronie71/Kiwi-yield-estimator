@@ -7,14 +7,89 @@ PASSWORD = st.secrets["auth"]["password"]
 def login():
 
     st.title("Login Required")
+
     password = st.text_input("Enter password:", type="password")
 
     if password == "":
         st.info("Please enter your password to access the program.")
+
+        st.markdown(
+            """
+            <style>
+            /* Fix global outline/box-shadow trail */
+            *:focus {
+                outline: none !important;
+                box-shadow: none !important;
+            }
+
+            /* Style shared buttons */
+            .support-button {
+                display: inline-block;
+                padding: 10px 15px;
+                background-color: #fff3e0;
+                color: #cc6600 !important;
+                font-weight: bold;
+                border-radius: 8px;
+                text-decoration: none;
+                border: 2px solid #cc6600;
+                transition: background 0.3s ease;
+                margin-right: 10px;
+                margin-bottom: 10px;
+            }
+
+            .support-button:hover {
+                background-color: #ffe0b2;
+            }
+            </style>
+
+            <a href="https://formsubmit.co/el/johiwe" target="_blank" class="support-button">
+                Request password
+            </a>
+            """,
+            unsafe_allow_html=True
+        )
+
         st.stop()
 
     if password != PASSWORD:
         st.error("Incorrect password. Try again.")
+
+        st.markdown(
+            """
+            <style>
+            /* Fix global outline/box-shadow trail */
+            *:focus {
+                outline: none !important;
+                box-shadow: none !important;
+            }
+
+            /* Style shared buttons */
+            .support-button {
+                display: inline-block;
+                padding: 10px 15px;
+                background-color: #fff3e0;
+                color: #cc6600 !important;
+                font-weight: bold;
+                border-radius: 8px;
+                text-decoration: none;
+                border: 2px solid #cc6600;
+                transition: background 0.3s ease;
+                margin-right: 10px;
+                margin-bottom: 10px;
+            }
+
+            .support-button:hover {
+                background-color: #ffe0b2;
+            }
+            </style>
+
+            <a href="https://formsubmit.co/el/johiwe" target="_blank" class="support-button">
+                Request password
+            </a>
+            """,
+            unsafe_allow_html=True
+        )
+        
         st.stop()
 
 login()
@@ -37,6 +112,7 @@ if not st.session_state.disclaimer_accepted:
             - Actual results may vary due to farm-specific factors such as climate, irrigation, fruit set variation, and tree age.
             - **No liability** is accepted by the developer or distributor for financial decisions or crop outcomes influenced by this tool.
             - Please support the the developers of this tool through the support link at the bottom of the next page.
+            - Do take note that the password for this tool could change at anytime, in that case please send a message requesting the new password through the "Request password" button.
             
             ---
             ### Key Assumption
